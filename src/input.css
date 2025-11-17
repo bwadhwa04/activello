@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+
+
+header{
+    @apply h-20 w-full box-border z-50;
+
+    .nav-container{
+        @apply max-h-20 w-2/3 mx-auto flex flex-row justify-between uppercase  text-sm z-49;
+        font-family: "Monsterrat", sans-serif;
+
+        .nav-subcontainer1{
+            @apply max-h-20 w-2/5  h-20 font-bold ml-5;
+
+            ul{
+                @apply flex flex-row mt-7 text-center;
+
+                li{
+                    @apply w-1/4 hover:text-purple-400 transition duration-300 cursor-pointer;
+
+                    select{
+                        @apply outline-none;
+                    }
+                }
+
+            }
+        }
+
+        .nav-subcontainer2{
+            @apply max-h-20 w-1/4 flex flex-row  h-20 gap-3;
+
+            input{
+                @apply mt-5  h-8 rounded-md pl-2 focus:outline-1 outline-purple-400;
+            }
+            img{
+                @apply h-8 w-8 bg-slate-100 mt-5 cursor-pointer;
+            }
+        }
+    }
+}
+hr{
+    @apply text-purple-50;
+}
+
+.activello-subheader{
+    @apply w-full h-40 bg-white flex flex-col justify-center gap-4;
+    font-family: "Montserrat", sans-serif;
+
+    img{
+        @apply mx-auto;
+    }
+    p{
+        @apply mx-auto text-slate-600 font-light;
+    }
+}
+
