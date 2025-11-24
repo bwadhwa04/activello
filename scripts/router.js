@@ -44,6 +44,7 @@ async function loadLayout() {
 async function loadPage() {
   let hash = window.location.hash.substring(1);
   const carousel = document.getElementById("carousel");
+  const subheaderHr = document.getElementById("subheader-hr");
 
   if (hash.startsWith("search")) {
     carousel.classList.add("hidden");
@@ -57,15 +58,23 @@ async function loadPage() {
     return;
   }
 
-  if(hash === "slide4" || hash === "slide3" || hash === "slide2" || hash === "slide1" || hash === "main-header"){
+  if (
+    hash === "slide4" ||
+    hash === "slide3" ||
+    hash === "slide2" ||
+    hash === "slide1" ||
+    hash === "main-header"
+  ) {
     return;
   }
 
   page = hash || "home";
   if (page === "home" || page === "page2") {
-    carousel.classList.remove("hidden"); // ← show again
+    carousel.classList.remove("hidden");
+    subheaderHr.classList.add("hidden"); // ← show again
   } else {
-    carousel.classList.add("hidden"); // ← hide on other pages
+    carousel.classList.add("hidden");
+    subheaderHr.classList.remove("hidden"); // ← hide on other pages
   }
   let file = `/pages/${page}.html`;
 
@@ -101,8 +110,6 @@ function renderSearchResults(data) {
   });
 }
 
-// Run on first load
-
 window.addEventListener("hashchange", loadPage);
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -120,7 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!input) return;
 
-      const value = input.value.trim().toLowerCase();
+      const value = input.value.trim().toLowerCase().replace(/\s+/g, "");;
 
       if (!value) {
         alert("Please enter a category");
