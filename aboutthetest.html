@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <script src="src/data/itemsdata.js" defer></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <title>soBONIX</title>
+  </head>
+  <script>
+    fetch("/index.html")
+      .then((res) => res.text())
+      .then((html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        const header = doc.querySelector("#Main-Header");
+        document.getElementById("aboutthetest-header").appendChild(header);
+
+        const subbodySidecontent = doc.querySelector(
+          "#Main-subbody-sidecontent"
+        );
+        document
+          .getElementById("aboutthetest-subbody-sidecontent")
+          .appendChild(subbodySidecontent);
+
+        const footer = doc.querySelector("#Main-footer");
+        document.getElementById("aboutthetest-footer").appendChild(footer);
+
+        const subheader = doc.querySelector("#Main-subheader");
+        document.getElementById("aboutthetest-subheader").appendChild(subheader);
+      });
+  </script>
+  <body>
+    <div id="aboutthetest-header"></div>
+    <hr />
+    <div id="aboutthetest-subheader"></div>
+    <hr class="w-7/12 text-purple-200! h-0.5 mx-auto mb-10" />
+
+    <div class="sub-body">
+      <div class="subbody-content">
+       
+      </div>
+      <div id="aboutthetest-subbody-sidecontent" class="subbody-sidecontent"></div>
+    </div>
+
+    <div id="aboutthetest-footer"></div>
+  </body>
+</html>
